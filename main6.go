@@ -111,6 +111,9 @@ func cat(r *bufio.Reader) {
 		if err == io.EOF {
 			break
 		}
-		fmt.Fprintf(os.Stdout, "%s", buf)
+		_, err = fmt.Fprintf(os.Stdout, "%s", buf)
+		if err != nil {
+			return
+		}
 	}
 }
